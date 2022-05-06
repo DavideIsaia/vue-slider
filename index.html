@@ -22,6 +22,7 @@
                 </div>
                 -->
                 <div class="item active">
+                    <!-- prende l'indice dell'elemento delle slides [0,1,ecc.] e lo mostra nell'immagine grande -->
                     <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title"/>
                     <div class="text">
                         <h3>{{ slides[currentSlide].title }}</h3>
@@ -31,6 +32,7 @@
             </div>
 
             <div class="thumbs">
+                <!-- i 2 tasti al clic svolgone la funzione associata -->
                 <div @click="prevSlide()" class="prev"></div>
                 <div @click="nextSlide()" class="next"></div>
                 <!--
@@ -42,13 +44,14 @@
                 <!-- aggiungo operatore ternario inline per decidere quale slide ha la classe active -->
                 <div v-for="(slide, index) in slides" 
                      class="thumb" 
-                     :class="(index == currentSlide) ? 'active' : ''">
+                     :class="(index == currentSlide) ? 'active' : ''"
+                     @click="changeImg(index)">
                      <!-- aggiungo l'immagine -->
                     <img :src="slide.image" alt="slide.title"/>
                 </div>                
             </div>
+        </div>
     </div>
-</div>
 
     <script src="js/app.js"></script>
 </body>

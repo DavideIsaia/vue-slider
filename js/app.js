@@ -61,6 +61,11 @@ const app = new Vue (
                     this.currentSlide = 0;
                 }
                 // console.log('Next', this.currentSlide);
+            },
+
+            // Parte al clic di una delle thumb: imposta currentSlide uguale all'indice dell'array, saltando le immagini intermedie e mostrando direttamente l'immagine desiderata 
+            changeImg(index){
+                this.currentSlide = index;
             }
         }
     }
