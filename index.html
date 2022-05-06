@@ -11,7 +11,7 @@
 <body>
     <div id="root">
         <div class="container">
-            <div class="items">
+            <div class="items">                
                 <!--
                 <div class="item active">
                     <img src="./img/01.jpg" alt="">
@@ -21,15 +21,23 @@
                     </div>
                 </div>
                 -->
+                <div class="item active">
+                    <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title"/>
+                    <div class="text">
+                        <h3>{{ slides[currentSlide].title }}</h3>
+                        <p>{{ slides[currentSlide].text }}</p>
+                    </div>
+                </div>
             </div>
+
             <div class="thumbs">
                 <!--
                 <div class="thumb active">
                     <img src="./img/01.jpg" alt="">
                 </div>
                 -->
-                <div class="prev"></div>
-                <div class="next"></div>
+                <div @click="prevSlide()" class="prev"></div>
+                <div @click="nextSlide()" class="next"></div>
             </div>
     </div>
 </div>
