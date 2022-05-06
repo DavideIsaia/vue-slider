@@ -21,7 +21,9 @@
                     </div>
                 </div>
                 -->
-                <div class="item active">
+                <div class="item active" 
+                     @mouseover="stopCycle()" 
+                     @mouseleave="restartCycle()">
                     <!-- prende l'indice dell'elemento delle slides [0,1,ecc.] e lo mostra nell'immagine grande -->
                     <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title"/>
                     <div class="text">

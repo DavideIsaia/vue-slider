@@ -66,12 +66,25 @@ const app = new Vue (
             // Parte al clic di una delle thumb: imposta currentSlide uguale all'indice, saltando le immagini intermedie e mostrando direttamente l'immagine desiderata 
             changeImg(index){
                 this.currentSlide = index;
+            },
+
+            // Parte al mouseover dell'immagine principale: ferma il ciclare delle immagini ogni 3sec
+            stopCycle() {
+                clearInterval(this.playNext);
+            },
+    
+            // Parte al mouseleave dell'immagine principale: ricomincia il ciclare delle immagini ogni 3sec
+            restartCycle(){
+                setInterval( this.playNext = setInterval(() =>{
+                    this.nextSlide();
+                }, 3000))
             }
         },
 
         // Funzione integrata in VueJS, da mettere fuori methods
-        mounted() {        
-            setInterval( () => {
+        mounted() {   
+            // cicla le immagini ogni 3 sec  
+            this.playNext = setInterval( () => {
                 this.nextSlide();
             }, 3000)
         }
