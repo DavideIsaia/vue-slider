@@ -63,10 +63,17 @@ const app = new Vue (
                 // console.log('Next', this.currentSlide);
             },
 
-            // Parte al clic di una delle thumb: imposta currentSlide uguale all'indice dell'array, saltando le immagini intermedie e mostrando direttamente l'immagine desiderata 
+            // Parte al clic di una delle thumb: imposta currentSlide uguale all'indice, saltando le immagini intermedie e mostrando direttamente l'immagine desiderata 
             changeImg(index){
                 this.currentSlide = index;
             }
+        },
+
+        // Funzione integrata in VueJS, da mettere fuori methods
+        mounted() {        
+            setInterval( () => {
+                this.nextSlide();
+            }, 3000)
         }
     }
 )
