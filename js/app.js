@@ -50,6 +50,7 @@ const app = new Vue (
                     this.currentSlide = this.slides.length - 1; // ultima
                 }
                 // console.log('Prev', this.currentSlide);
+                this.resetCycle();
             },
 
             // Slide successiva
@@ -61,6 +62,7 @@ const app = new Vue (
                     this.currentSlide = 0;
                 }
                 // console.log('Next', this.currentSlide);
+                this.resetCycle();
             },
 
             // Parte al clic di una delle thumb: imposta currentSlide uguale all'indice, saltando le immagini intermedie e mostrando direttamente l'immagine desiderata 
@@ -74,10 +76,16 @@ const app = new Vue (
             },
     
             // Parte al mouseleave dell'immagine principale: ricomincia il ciclare delle immagini ogni 3sec
-            restartCycle(){
-                setInterval( this.playNext = setInterval(() =>{
+            restartCycle() {
+                setInterval( this.playNext = setInterval(() => {
                     this.nextSlide();
                 }, 3000))
+            },
+
+            // Resetta il timer quando l'utente interagisce con le freccette dello slider
+            resetCycle() {
+                this.stopCycle();
+                this.restartCycle();
             }
         },
 
